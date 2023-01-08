@@ -22,27 +22,27 @@ struct ContentView: View {
         
                 HStack(spacing: 0) {
                     //houer
-                    Picker(selection: $selectedHouers, label: Text("C1")) {
-                        ForEach(0..<10) { n in
-                            Text("\(n) a").tag(n)
+                    Picker(selection: $selectedHouers, label: Text("H")) {
+                        ForEach(0..<12) { n in
+                            Text("\(n) ").tag(n)
                         }
                     }
                     .pickerStyle(.wheel)
                     .frame(minWidth: 0)
                     .clipped()
                     // min
-                    Picker(selection: $selectedMinutes, label: Text("C1")) {
-                        ForEach(0..<10) { n in
-                            Text("\(n) a").tag(n)
+                    Picker(selection: $selectedMinutes, label: Text("M")) {
+                        ForEach(0..<60) { n in
+                            Text("\(n) ").tag(n)
                         }
                     }
                     .pickerStyle(.wheel)
                     .frame(minWidth: 0)
                     .clipped()
                     //sec
-                    Picker(selection: $selectedMinutes, label: Text("C1")) {
-                        ForEach(0..<10) { n in
-                            Text("\(n) a").tag(n)
+                    Picker(selection: $selectedMinutes, label: Text("S")) {
+                        ForEach(0..<95) { n in
+                            Text("\(n) ").tag(n)
                         }
                     }
                     .pickerStyle(.wheel)
