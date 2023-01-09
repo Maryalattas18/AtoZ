@@ -25,7 +25,7 @@ struct ContentView: View {
                 HStack(spacing: 0) {
                     //houer
                     Picker(selection: $selectedHouers, label: Text("H")) {
-                        ForEach(0..<12) { n in
+                        ForEach(0..<23) { n in
                             Text("\(n) ").tag(n)
                         }
                     }
@@ -68,6 +68,7 @@ struct CustomGaugeStyle: GaugeStyle {
                 .stroke(Color.gray, lineWidth: 10)
                 .frame(width: 300, height: 300)
             Circle()
+            
                 .trim(from: 0, to: CGFloat(configuration.value))
                 .stroke(Color.blue, lineWidth: 10)
                 .frame(width: 300, height: 300)
