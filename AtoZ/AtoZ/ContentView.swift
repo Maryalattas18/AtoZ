@@ -9,9 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var selectedHouers = 0
-    @State private var selectedMinutes = 2
-    @State private var selectedSecondes = 2
+   
 
     var body: some View {
       
@@ -21,39 +19,7 @@ struct ContentView: View {
             Gauge(value: 0.5) {
                         Text("Gauge")
                     }                   .gaugeStyle(CustomGaugeStyle())
-        
-                HStack(spacing: 0) {
-                    //houer
-                    Picker(selection: $selectedHouers, label: Text("H")) {
-                        ForEach(0..<23) { n in
-                            Text("\(n) ").tag(n)
-                        }
-                    }
-                    .pickerStyle(.wheel)
-                    .frame(minWidth: 0)
-                    .clipped()
-                    // min
-                    Picker(selection: $selectedMinutes, label: Text("M")) {
-                        ForEach(0..<60) { n in
-                            Text("\(n) ").tag(n)
-                        }
-                    }
-                    .pickerStyle(.wheel)
-                    .frame(minWidth: 0)
-                    .clipped()
-                    //sec
-                    Picker(selection: $selectedMinutes, label: Text("S")) {
-                        ForEach(0..<95) { n in
-                            Text("\(n) ").tag(n)
-                        }
-                    }
-                    .pickerStyle(.wheel)
-                    .frame(minWidth: 0)
-                    .clipped()
-                }
-           // }
-           // .gaugeStyle(CustomGaugeStyle())
-        //  .gaugeStyle(.accessoryCircularCapacity)
+    
         
         }//Vs
         }//body
@@ -62,6 +28,11 @@ struct ContentView: View {
 
 
 struct CustomGaugeStyle: GaugeStyle {
+    
+    @State private var selectedHouers = 0
+    @State private var selectedMinutes = 2
+    @State private var selectedSecondes = 2
+    
     func makeBody(configuration: GaugeStyleConfiguration) -> some View {
         ZStack {
             Circle()
@@ -75,6 +46,38 @@ struct CustomGaugeStyle: GaugeStyle {
                 .rotationEffect(Angle(degrees: 90))
 //            Text("\(Int(configuration.value * 100))%")
 //                .font(.title)
+            
+           HStack() {
+                //houer
+                Picker(selection: $selectedHouers, label: Text("C1")) {
+                    ForEach(0..<12) { n in
+                        Text("\(n) ").tag(n)
+                    }
+                }
+                .pickerStyle(.wheel)
+                .frame(minWidth: 0)
+                .clipped()
+                // min
+                Picker(selection: $selectedMinutes, label: Text("C1")) {
+                    ForEach(0..<60) { n in
+                        Text("\(n) ").tag(n)
+                    }
+                }
+                .pickerStyle(.wheel)
+                .frame(minWidth: 0)
+                .clipped()
+                //sec
+                Picker(selection: $selectedMinutes, label: Text("C1")) {
+                    ForEach(0..<60) { n in
+                        Text("\(n) ").tag(n)
+                    }
+                }
+                .pickerStyle(.wheel)
+                .frame(minWidth: 0)
+                .clipped()
+                
+            }
+           .frame(width: /*@START_MENU_TOKEN@*/240.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/240.0/*@END_MENU_TOKEN@*/)
         }
     }
 }
