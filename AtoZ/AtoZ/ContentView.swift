@@ -20,8 +20,7 @@ struct ContentView: View {
            // Gauge(value: 50, in: 0...100) {
             Gauge(value: 0.5) {
                         Text("Gauge")
-                   // }
-//                    .gaugeStyle(CustomGaugeStyle())
+                    }                   .gaugeStyle(CustomGaugeStyle())
         
                 HStack(spacing: 0) {
                     //houer
@@ -52,10 +51,10 @@ struct ContentView: View {
                     .frame(minWidth: 0)
                     .clipped()
                 }
-            }
-            .gaugeStyle(CustomGaugeStyle())
-//          .gaugeStyle(.accessoryCircularCapacity)
-//
+           // }
+           // .gaugeStyle(CustomGaugeStyle())
+        //  .gaugeStyle(.accessoryCircularCapacity)
+        
         }//Vs
         }//body
     
