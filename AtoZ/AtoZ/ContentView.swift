@@ -17,8 +17,11 @@ struct ContentView: View {
       
         VStack{
             
-            Gauge(value: 50, in: 0...100) {
-                
+           // Gauge(value: 50, in: 0...100) {
+            Gauge(value: 0.5) {
+                        Text("Gauge")
+                   // }
+//                    .gaugeStyle(CustomGaugeStyle())
         
                 HStack(spacing: 0) {
                     //houer
@@ -50,12 +53,34 @@ struct ContentView: View {
                     .clipped()
                 }
             }
-          .gaugeStyle(.accessoryCircularCapacity)
-           
+            .gaugeStyle(CustomGaugeStyle())
+//          .gaugeStyle(.accessoryCircularCapacity)
+//
         }//Vs
         }//body
     
 }//all
+
+
+struct CustomGaugeStyle: GaugeStyle {
+    func makeBody(configuration: GaugeStyleConfiguration) -> some View {
+        ZStack {
+            Circle()
+                .stroke(Color.gray, lineWidth: 10)
+                .frame(width: 300, height: 300)
+            Circle()
+                .trim(from: 0, to: CGFloat(configuration.value))
+                .stroke(Color.blue, lineWidth: 10)
+                .frame(width: 300, height: 300)
+                .rotationEffect(Angle(degrees: 90))
+//            Text("\(Int(configuration.value * 100))%")
+//                .font(.title)
+        }
+    }
+}
+
+
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
