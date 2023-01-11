@@ -12,7 +12,10 @@ struct ContentView: View {
     @State var hoursSelection = 0
     @State var minSelection = 0
     @State var secSelection = 0
-    
+    @State var countDowonTimer = 10
+
+       @State var timerRunning = false
+       
     var hours = [Int](0..<24)
     var min = [Int](0..<60)
     var sec = [Int](0..<60)
@@ -21,10 +24,32 @@ struct ContentView: View {
     @State var task:String = ""
     @State private var  alarm = 1
     
+    let timer = Timer.publish(every:1 , on: .main , in: .common ).autoconnect()
+    
+    
     var body: some View {
         
         VStack{
-            
+            Text("\(countDowonTimer)")
+                           .onReceive(timer) { _ in
+                               if countDowonTimer > 0 && timerRunning{
+                                   countDowonTimer -= 1
+                               }else{
+                                   timerRunning = false
+                               }
+                           }
+                           .font(.system(size : 80, weight : .bold))
+                           .opacity(0.80)
+                       
+                       HStack(){
+                           Button("Start") {
+                               timerRunning = true
+                           }
+                           
+                           Button("Reset") {
+                               countDowonTimer = 5
+                           }
+                        }//v
             ZStack {
                 
                 Circle()
