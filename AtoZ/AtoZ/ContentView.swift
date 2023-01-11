@@ -81,21 +81,22 @@ struct ContentView: View {
                         if secSelection > 0 && timerRunning {
                             
                             secSelection -= 1
-
+                            
                         }else {
-
+                            
                             if secSelection == 0 && minSelection != 0 ,  secSelection == 0 && hoursSelection != 0  {
-                                secSelection == +59
+                                secSelection = +59
                                 secSelection -= 1
+                            }
+                            else{
+                                timerRunning = false
+                            }
                         }
-                        else{
-                            timerRunning = false
-                        }
-                        
-                    
+                    }
                     .font(.system(size : 80, weight : .bold))
                     .opacity(0.80)
                 
+                            
             }
                        HStack(){
                            Button("Start") {
@@ -103,7 +104,7 @@ struct ContentView: View {
                            }
                            
                            Button("Reset") {
-                               countDowonTimer = 5
+                               countDowonTimer = 0
                            }
                         }//v
             ZStack {
@@ -134,7 +135,7 @@ struct ContentView: View {
                             }//pic
                             
                             .pickerStyle(WheelPickerStyle())
-                            Text("\(hoursSelection)")
+                           // Text("\(hoursSelection)")
                             
 
                             Picker(selection: self.$minSelection, label: Text("")) {
@@ -143,7 +144,7 @@ struct ContentView: View {
                                 }//for
                             }//pic
                             .pickerStyle(WheelPickerStyle())
-                            Text("\(minSelection)")
+                           // Text("\(minSelection)")
                             
                             
                             Picker(selection: self.$secSelection, label: Text("")) {
@@ -152,7 +153,7 @@ struct ContentView: View {
                                 }//for
                             }//pic
                             .pickerStyle(WheelPickerStyle())
-                            Text("\(secSelection)")
+                           // Text("\(secSelection)")
                         }//h
                         .frame(width: 300,height: 300)
                 
