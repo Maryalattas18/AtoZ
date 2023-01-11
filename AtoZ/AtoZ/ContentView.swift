@@ -12,9 +12,9 @@ struct ContentView: View {
     @State var hoursSelection = 0
     @State var minSelection = 0
     @State var secSelection = 0
-    @State var countDowonTimer = 10
+    
 
-       @State var timerRunning = false
+     
        
     var hours = [Int](0..<24)
     var min = [Int](0..<60)
@@ -22,25 +22,58 @@ struct ContentView: View {
     
     
     @State var task:String = ""
+    
+    @State var countDowonTimer = 10
     @State private var  alarm = 1
+    @State var timerRunning = false
     
     let timer = Timer.publish(every:1 , on: .main , in: .common ).autoconnect()
+    
     
     
     var body: some View {
         
         VStack{
-            Text("\(countDowonTimer)")
-                           .onReceive(timer) { _ in
-                               if countDowonTimer > 0 && timerRunning{
-                                   countDowonTimer -= 1
-                               }else{
-                                   timerRunning = false
-                               }
-                           }
-                           .font(.system(size : 80, weight : .bold))
-                           .opacity(0.80)
-                       
+            HStack{
+                
+                Text("\(hoursSelection)")
+                    .onReceive(timer) { _ in
+                        if hoursSelection > 0 && timerRunning{
+                            hoursSelection -= 1
+                        }else{
+                            timerRunning = false
+                        }
+                    }
+                    .font(.system(size : 80, weight : .bold))
+                    .opacity(0.80)
+                
+                
+                
+                Text("\(minSelection)")
+                    .onReceive(timer) { _ in
+                        if minSelection > 0 && timerRunning{
+                            minSelection -= 1
+                        }else{
+                            timerRunning = false
+                        }
+                    }
+                    .font(.system(size : 80, weight : .bold))
+                    .opacity(0.80)
+               
+                
+                
+                Text("\(secSelection)")
+                    .onReceive(timer) { _ in
+                        if secSelection > 0 && timerRunning{
+                            secSelection -= 1
+                        }else{
+                            timerRunning = false
+                        }
+                    }
+                    .font(.system(size : 80, weight : .bold))
+                    .opacity(0.80)
+                
+            }
                        HStack(){
                            Button("Start") {
                                timerRunning = true
@@ -76,14 +109,19 @@ struct ContentView: View {
                                     Text("\(self.hours[index])  H").tag(index)
                                 }//for
                             }//pic
-                            .pickerStyle(WheelPickerStyle())
                             
+                            .pickerStyle(WheelPickerStyle())
+                            Text("\(hoursSelection)")
+                            
+
                             Picker(selection: self.$minSelection, label: Text("")) {
                                 ForEach(0 ..< self.min.count) { index in
                                     Text("\(self.min[index])  M").tag(index)
                                 }//for
                             }//pic
                             .pickerStyle(WheelPickerStyle())
+                            Text("\(minSelection)")
+                            
                             
                             Picker(selection: self.$secSelection, label: Text("")) {
                                 ForEach(0 ..< self.sec.count) { index in
@@ -91,8 +129,9 @@ struct ContentView: View {
                                 }//for
                             }//pic
                             .pickerStyle(WheelPickerStyle())
+                            Text("\(secSelection)")
                         }//h
-                        .frame(width: 200,height: 200)
+                        .frame(width: 300,height: 300)
                 
     
                 }//Z
