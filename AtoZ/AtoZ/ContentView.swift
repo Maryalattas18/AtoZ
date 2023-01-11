@@ -62,7 +62,8 @@ struct ContentView: View {
                 Text("\(minSelection)")
                     .onReceive(timer) { _ in
                         if minSelection > 0 && timerRunning{
-                            minSelection -= 1
+                            if secSelection == 0 {
+                                minSelection -= 1}
                         }else{
                             timerRunning = false
                         }
@@ -77,12 +78,21 @@ struct ContentView: View {
                 
                 Text("\(secSelection)")
                     .onReceive(timer) { _ in
-                        if secSelection > 0 && timerRunning{
+                        if secSelection > 0 && timerRunning {
+                            
                             secSelection -= 1
-                        }else{
+
+                        }else {
+
+                            if secSelection == 0 && minSelection != 0 ,  secSelection == 0 && hoursSelection != 0  {
+                                secSelection == +59
+                                secSelection -= 1
+                        }
+                        else{
                             timerRunning = false
                         }
-                    }
+                        
+                    
                     .font(.system(size : 80, weight : .bold))
                     .opacity(0.80)
                 
