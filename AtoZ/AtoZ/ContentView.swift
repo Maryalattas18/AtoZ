@@ -9,78 +9,102 @@ import SwiftUI
 
 struct ContentView: View {
     
-   
-
+    @State var hoursSelection = 0
+    @State var minSelection = 0
+    @State var secSelection = 0
+    
+    var hours = [Int](0..<24)
+    var min = [Int](0..<60)
+    var sec = [Int](0..<60)
+    
+    
+    @State var task:String = ""
+    @State private var  alarm = 1
+    
     var body: some View {
-      
+        
         VStack{
             
-           // Gauge(value: 50, in: 0...100) {
-            Gauge(value: 0.5) {
-                        Text("Gauge")
-                    }                   .gaugeStyle(CustomGaugeStyle())
-    
-        
-        }//Vs
-        }//body
-    
-}//all
-
-
-struct CustomGaugeStyle: GaugeStyle {
-    
-    @State private var selectedHouers = 0
-    @State private var selectedMinutes = 2
-    @State private var selectedSecondes = 2
-    
-    func makeBody(configuration: GaugeStyleConfiguration) -> some View {
-        ZStack {
-            Circle()
-                .stroke(Color.gray, lineWidth: 10)
-                .frame(width: 300, height: 300)
-            Circle()
-            
-                .trim(from: 0, to: CGFloat(configuration.value))
-                .stroke(Color.blue, lineWidth: 10)
-                .frame(width: 300, height: 300)
-                .rotationEffect(Angle(degrees: 90))
-//            Text("\(Int(configuration.value * 100))%")
-//                .font(.title)
-            
-           HStack() {
-                //houer
-                Picker(selection: $selectedHouers, label: Text("C1")) {
-                    ForEach(0..<12) { n in
-                        Text("\(n) ").tag(n)
-                    }
-                }
-                .pickerStyle(.wheel)
-                .frame(minWidth: 0)
-                .clipped()
-                // min
-                Picker(selection: $selectedMinutes, label: Text("C1")) {
-                    ForEach(0..<60) { n in
-                        Text("\(n) ").tag(n)
-                    }
-                }
-                .pickerStyle(.wheel)
-                .frame(minWidth: 0)
-                .clipped()
-                //sec
-                Picker(selection: $selectedMinutes, label: Text("C1")) {
-                    ForEach(0..<60) { n in
-                        Text("\(n) ").tag(n)
-                    }
-                }
-                .pickerStyle(.wheel)
-                .frame(minWidth: 0)
-                .clipped()
+            ZStack {
                 
+                Circle()
+                    .stroke(Color.gray, lineWidth: 20)
+                    .frame(width: 300, height: 300)
+                
+                TimelineView(.animation){ context in
+                    let date = context.date
+                    let seconds = Calendar.current.component(.second, from: date)
+                    Circle()
+                        .trim(from: 0, to: Double(seconds)/60.0)
+                    
+                        .stroke(Color("Color"), lineWidth: 10)
+                        .frame(width: 300, height: 300)
+                        .rotationEffect(Angle(degrees: 270))
+                    
+                                    }//contec=xt
+                                    .padding()
+                    
+                        HStack{
+                            
+                            Picker(selection: self.$hoursSelection, label: Text("")) {
+                                ForEach(0 ..< self.hours.count) { index in
+                                    Text("\(self.hours[index])  H").tag(index)
+                                }//for
+                            }//pic
+                            .pickerStyle(WheelPickerStyle())
+                            
+                            Picker(selection: self.$minSelection, label: Text("")) {
+                                ForEach(0 ..< self.min.count) { index in
+                                    Text("\(self.min[index])  M").tag(index)
+                                }//for
+                            }//pic
+                            .pickerStyle(WheelPickerStyle())
+                            
+                            Picker(selection: self.$secSelection, label: Text("")) {
+                                ForEach(0 ..< self.sec.count) { index in
+                                    Text("\(self.sec[index])  S").tag(index)
+                                }//for
+                            }//pic
+                            .pickerStyle(WheelPickerStyle())
+                        }//h
+                        .frame(width: 200,height: 200)
+                
+    
+                }//Z
+            
+            TextField("Task", text: $task)
+                .frame(width: 270.0, height: 50.0)
+                .foregroundColor(Color.gray)
+                .overlay(RoundedRectangle(cornerRadius: 8)
+                    .stroke(.gray, lineWidth:1))
+            
+            HStack{
+                Picker("Alarm In", selection: $alarm) { Text("5 M")
+                        .tag(0)
+                    Text("10 M")
+                    .tag(1)}
+                .pickerStyle(SegmentedPickerStyle())
             }
-           .frame(width: /*@START_MENU_TOKEN@*/240.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/240.0/*@END_MENU_TOKEN@*/)
-        }
-    }
-}
+            .cornerRadius(8)
+            .frame(width: 270.0, height: 50.0)
+            
+            Button {
+
+            } label: {
+                Text("Start")
+            }//button
+            .padding()
+            .frame(maxWidth: 200)
+            .font(.callout)
+            .foregroundColor(.white)
+            .background(Color("Color"))
+            .cornerRadius(8)
+
+            
+        }//v
+    }//body
+}//all
+    
 
 
 
