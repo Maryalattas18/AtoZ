@@ -38,14 +38,24 @@ struct ContentView: View {
                 
                 Text("\(hoursSelection)")
                     .onReceive(timer) { _ in
-                        if hoursSelection > 0 && timerRunning{
-                            hoursSelection -= 1
+                        
+                            if hoursSelection > 0 && timerRunning{
+                                if minSelection == 0 && secSelection == 0 {
+        
+                                hoursSelection -= 1
+                            }
                         }else{
                             timerRunning = false
                         }
                     }
                     .font(.system(size : 80, weight : .bold))
                     .opacity(0.80)
+                
+                
+                
+                
+                
+                
                 
                 
                 
@@ -60,6 +70,9 @@ struct ContentView: View {
                     .font(.system(size : 80, weight : .bold))
                     .opacity(0.80)
                
+                
+                
+                
                 
                 
                 Text("\(secSelection)")
