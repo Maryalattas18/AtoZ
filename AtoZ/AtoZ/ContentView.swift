@@ -249,7 +249,7 @@ struct ContentView: View {
             .background(Color("Color"))
             .cornerRadius(8)
 
-            Button(".") {
+            Button("..") {
                             showingAlert = true
                         }
                         .alert("Stay Focus ", isPresented: $showingAlert) {
