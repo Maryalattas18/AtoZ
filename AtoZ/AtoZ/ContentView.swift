@@ -36,12 +36,61 @@ struct ContentView: View {
         VStack{
             HStack{
                 
+//                Text("\(hoursSelection) : \(minSelection) : \(secSelection)")
+//                    .onReceive(timer) { _ in
+//
+//                        while hoursSelection > 0 && minSelection > 0  && secSelection > 0 && timerRunning  {
+//
+//
+//                            if secSelection == 0 && minSelection == 0 && hoursSelection > 0 && timerRunning {
+//
+//                                                                    hoursSelection -= 1
+//                                                                    minSelection += 59
+//                                                                    secSelection += 59
+//
+//
+//                            }else {
+//                                if secSelection == 0 && minSelection > 0 && hoursSelection > 0 && timerRunning{
+//
+//                                    minSelection -= 1
+//                                    secSelection += 59
+//
+//                                }else{
+//
+//                                 if secSelection > 0 && minSelection > 0 && hoursSelection > 0 && timerRunning{
+//                                                                    secSelection -= 1
+//
+//                                        //                                }else if secSelection == 0 && minSelection == 0 && hoursSelection == 0 {
+//                                        //
+//                                        //                                    hoursSelection = -1
+//                                        //                                    minSelection = -1
+//                                        //                                    secSelection = +59
+//                                        //                                }
+//
+//                                    } else{
+//                                        timerRunning = false
+//                                    }
+//                                }
+//                            }
+//                                }//w
+//
+//
+//                    }
+//                    .font(.system(size : 80, weight : .bold))
+//                    .opacity(0.80)
+
+
+                
+                
+                
+                
+
                 Text("\(hoursSelection)")
                     .onReceive(timer) { _ in
-                        
-                            if hoursSelection > 0 && timerRunning{
-                                if minSelection == 0 && secSelection == 0 {
-        
+
+                            if hoursSelection >= 0 && timerRunning{
+                                if minSelection == 0 && secSelection == 0  {
+
                                 hoursSelection -= 1
                             }
                         }else{
@@ -50,40 +99,49 @@ struct ContentView: View {
                     }
                     .font(.system(size : 80, weight : .bold))
                     .opacity(0.80)
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                Text("\(minSelection)")
+
+
+
+
+                Text(": \(minSelection)")
                     .onReceive(timer) { _ in
                         if minSelection > 0 && timerRunning{
                             if secSelection == 0 {
-                                minSelection -= 1}
+                                minSelection -= 1
+
+                            }
+
+                        }else if minSelection == 0 && hoursSelection != 0  {
+                                    hoursSelection -= 1
+                                    minSelection = +50
+                            if minSelection != 0 && secSelection != 0 {
+                                minSelection  -= 1
+                                secSelection -= 1
+
+                            }
+                                    secSelection = +50
+
+
+
+
                         }else{
-                            timerRunning = false
+                                timerRunning = false
+                            }
                         }
-                    }
                     .font(.system(size : 80, weight : .bold))
                     .opacity(0.80)
-               
-                
-                
-                
-                
-                
-                Text("\(secSelection)")
+
+
+
+
+                Text(": \(secSelection)")
                     .onReceive(timer) { _ in
                         if secSelection > 0 && timerRunning {
-                            
+
                             secSelection -= 1
-                            
+
                         }else {
-                            
+
                             if secSelection == 0 && minSelection != 0 ,  secSelection == 0 && hoursSelection != 0  {
                                 secSelection = +59
                                 secSelection -= 1
@@ -95,18 +153,23 @@ struct ContentView: View {
                     }
                     .font(.system(size : 80, weight : .bold))
                     .opacity(0.80)
-                
-                            
+
+
             }
+
+            
                        HStack(){
                            Button("Start") {
                                timerRunning = true
                            }
                            
                            Button("Reset") {
-                               countDowonTimer = 0
+                               countDowonTimer = 1
                            }
-                        }//v
+                        }//h
+            
+            
+            
             ZStack {
                 
                 Circle()
