@@ -14,5 +14,12 @@ help people and ADHD to finish task
 ## Demo of your App (1 - 2 minute long)
 
 ## Challenge Summary
+An App that  help remains focus on one spicific task and not be distracted be other tasks 
+to help all people who have multi task  ,ADHD , Alzheimer's 
+by sending notification every 10 or 20 minutes to remiend you what are you doing
+
+
+
+
 
 
