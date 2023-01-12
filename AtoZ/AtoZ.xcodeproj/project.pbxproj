@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C217EA3D297022A9000360A6 /* timeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C217EA3C297022A9000360A6 /* timeView.swift */; };
+		C217EA3F29702D88000360A6 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = C217EA3E29702D88000360A6 /* test.swift */; };
 		C217EE7A296C311700765DC4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C217EE7C296C311700765DC4 /* Localizable.strings */; };
 		F6AAD22A296AFF0600735026 /* AtoZApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AAD229296AFF0600735026 /* AtoZApp.swift */; };
 		F6AAD22C296AFF0600735026 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AAD22B296AFF0600735026 /* ContentView.swift */; };
@@ -36,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C217EA3C297022A9000360A6 /* timeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = timeView.swift; sourceTree = "<group>"; };
+		C217EA3E29702D88000360A6 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		C217EE7B296C311700765DC4 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C217EE7D296C312200765DC4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F6AAD226296AFF0600735026 /* AtoZ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AtoZ.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,6 +105,8 @@
 			children = (
 				F6AAD229296AFF0600735026 /* AtoZApp.swift */,
 				F6AAD22B296AFF0600735026 /* ContentView.swift */,
+				C217EA3C297022A9000360A6 /* timeView.swift */,
+				C217EA3E29702D88000360A6 /* test.swift */,
 				C217EE7C296C311700765DC4 /* Localizable.strings */,
 				F6AAD22D296AFF0700735026 /* Assets.xcassets */,
 				F6AAD22F296AFF0700735026 /* Preview Content */,
@@ -269,6 +275,8 @@
 				F6AAD22C296AFF0600735026 /* ContentView.swift in Sources */,
 				F6AAD22A296AFF0600735026 /* AtoZApp.swift in Sources */,
 				F6F80E52296EC6CA0092AA4C /* SwiftUIView.swift in Sources */,
+				C217EA3F29702D88000360A6 /* test.swift in Sources */,
+				C217EA3D297022A9000360A6 /* timeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,7 +375,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -421,7 +429,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

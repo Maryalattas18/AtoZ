@@ -12,9 +12,6 @@ struct ContentView: View {
     @State var hoursSelection = 0
     @State var minSelection = 0
     @State var secSelection = 0
-    
-
-     
        
     var hours = [Int](0..<24)
     var min = [Int](0..<60)
@@ -29,43 +26,43 @@ struct ContentView: View {
     
     let timer = Timer.publish(every:1 , on: .main , in: .common ).autoconnect()
     
-    
+    @State private var showingAlert = false
+
+        
     
     var body: some View {
         
         VStack{
             HStack{
-                
+//
 //                Text("\(hoursSelection) : \(minSelection) : \(secSelection)")
 //                    .onReceive(timer) { _ in
 //
-//                        while hoursSelection > 0 && minSelection > 0  && secSelection > 0 && timerRunning  {
+//                        if hoursSelection > 0 && minSelection > 0  && secSelection > 0 && timerRunning  {
+////                            secSelection -= 1
 //
-//
-//                            if secSelection == 0 && minSelection == 0 && hoursSelection > 0 && timerRunning {
+//                         if secSelection == 0 && minSelection == 0 && hoursSelection > 0 && timerRunning {
 //
 //                                                                    hoursSelection -= 1
 //                                                                    minSelection += 59
 //                                                                    secSelection += 59
 //
 //
-//                            }else {
-//                                if secSelection == 0 && minSelection > 0 && hoursSelection > 0 && timerRunning{
+//                            }else if secSelection == 0 && minSelection > 0 && hoursSelection > 0 && timerRunning{
 //
 //                                    minSelection -= 1
 //                                    secSelection += 59
 //
-//                                }else{
-//
-//                                 if secSelection > 0 && minSelection > 0 && hoursSelection > 0 && timerRunning{
+//                                }else if secSelection > 0 && minSelection > 0 && hoursSelection > 0 && timerRunning{
 //                                                                    secSelection -= 1
 //
-//                                        //                                }else if secSelection == 0 && minSelection == 0 && hoursSelection == 0 {
-//                                        //
-//                                        //                                    hoursSelection = -1
-//                                        //                                    minSelection = -1
-//                                        //                                    secSelection = +59
-//                                        //                                }
+//
+//                                                                        }else if secSelection == 0 && minSelection == 0 && hoursSelection == 0 {
+//
+//                                                                            hoursSelection = -1
+//                                                                            minSelection = -1
+//                                                                            secSelection = +59
+//                                                                        }
 //
 //                                    } else{
 //                                        timerRunning = false
@@ -157,17 +154,17 @@ struct ContentView: View {
 
             }
 
-            
-                       HStack(){
-                           Button("Start") {
-                               timerRunning = true
-                           }
-                           
-                           Button("Reset") {
-                               countDowonTimer = 1
-                           }
-                        }//h
-            
+
+//                       HStack(){
+//                           Button("Start") {
+//                               timerRunning = true
+//                           }
+//
+//                           Button("Reset") {
+//                               countDowonTimer = 1
+//                           }
+//                        }//h
+
             
             
             ZStack {
@@ -218,7 +215,7 @@ struct ContentView: View {
                             .pickerStyle(WheelPickerStyle())
                            // Text("\(secSelection)")
                         }//h
-                        .frame(width: 300,height: 300)
+                        .frame(width: 250,height: 250)
                 
     
                 }//Z
@@ -227,7 +224,7 @@ struct ContentView: View {
                 .frame(width: 270.0, height: 50.0)
                 .foregroundColor(Color.gray)
                 .overlay(RoundedRectangle(cornerRadius: 8)
-                    .stroke(.gray, lineWidth:1))
+                    .stroke(.white, lineWidth:1))
             
             HStack{
                 Picker("Alarm In", selection: $alarm) { Text("5 M")
@@ -240,6 +237,7 @@ struct ContentView: View {
             .frame(width: 270.0, height: 50.0)
             
             Button {
+                    timerRunning = true
 
             } label: {
                 Text("Start")
@@ -251,12 +249,14 @@ struct ContentView: View {
             .background(Color("Color"))
             .cornerRadius(8)
 
-            
+            Button(".") {
+                            showingAlert = true
+                        }
+                        .alert("Stay Focus ", isPresented: $showingAlert) {
+                            Button("OK", role: .cancel) { }}
         }//v
     }//body
 }//all
-    
-
 
 
 
@@ -265,3 +265,8 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
+
+
+
+
