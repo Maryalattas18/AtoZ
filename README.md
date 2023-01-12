@@ -1,4 +1,5 @@
-#Focus
+
+# Focus
 
 # Challenge Statement
 Make an  solution that help people to Continue doing there main task
@@ -23,3 +24,7 @@ by sending notification every 10 or 20 minutes to remiend you what are you doing
 
 
 
+## Authors
+
+- [@Maryalattas18](https://github.com/LulwahAlmisfer](https://github.com/Maryalattas18)
+- [@DoaaNwe](https://github.com/DoaaNwe)
