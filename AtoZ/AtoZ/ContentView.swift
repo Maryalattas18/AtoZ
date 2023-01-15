@@ -34,54 +34,8 @@ struct ContentView: View {
         
         VStack{
             HStack{
-//
-//                Text("\(hoursSelection) : \(minSelection) : \(secSelection)")
-//                    .onReceive(timer) { _ in
-//
-//                        if hoursSelection > 0 && minSelection > 0  && secSelection > 0 && timerRunning  {
-////                            secSelection -= 1
-//
-//                         if secSelection == 0 && minSelection == 0 && hoursSelection > 0 && timerRunning {
-//
-//                                                                    hoursSelection -= 1
-//                                                                    minSelection += 59
-//                                                                    secSelection += 59
-//
-//
-//                            }else if secSelection == 0 && minSelection > 0 && hoursSelection > 0 && timerRunning{
-//
-//                                    minSelection -= 1
-//                                    secSelection += 59
-//
-//                                }else if secSelection > 0 && minSelection > 0 && hoursSelection > 0 && timerRunning{
-//                                                                    secSelection -= 1
-//
-//
-//                                                                        }else if secSelection == 0 && minSelection == 0 && hoursSelection == 0 {
-//
-//                                                                            hoursSelection = -1
-//                                                                            minSelection = -1
-//                                                                            secSelection = +59
-//                                                                        }
-//
-//                                    } else{
-//                                        timerRunning = false
-//                                    }
-//                                }
-//                            }
-//                                }//w
-//
-//
-//                    }
-//                    .font(.system(size : 80, weight : .bold))
-//                    .opacity(0.80)
-
 
                 
-                
-                
-                
-
                 Text("\(hoursSelection)")
                     .onReceive(timer) { _ in
 
@@ -110,13 +64,13 @@ struct ContentView: View {
 
                         }else if minSelection == 0 && hoursSelection != 0  {
                                     hoursSelection -= 1
-                                    minSelection = +50
+                                    minSelection += 59
                             if minSelection != 0 && secSelection != 0 {
                                 minSelection  -= 1
                                 secSelection -= 1
 
                             }
-                                    secSelection = +50
+                                    secSelection += 59
 
 
 
@@ -140,7 +94,7 @@ struct ContentView: View {
                         }else {
 
                             if secSelection == 0 && minSelection != 0 ,  secSelection == 0 && hoursSelection != 0  {
-                                secSelection = +59
+                                secSelection += 59
                                 secSelection -= 1
                             }
                             else{
@@ -153,17 +107,6 @@ struct ContentView: View {
 
 
             }
-
-
-//                       HStack(){
-//                           Button("Start") {
-//                               timerRunning = true
-//                           }
-//
-//                           Button("Reset") {
-//                               countDowonTimer = 1
-//                           }
-//                        }//h
 
             
             
@@ -186,6 +129,7 @@ struct ContentView: View {
                                     }//contec=xt
                                     .padding()
                     
+            
                         HStack{
                             
                             Picker(selection: self.$hoursSelection, label: Text("")) {
@@ -249,7 +193,7 @@ struct ContentView: View {
             .background(Color("Color"))
             .cornerRadius(8)
 
-            Button("") {
+            Button("        ") {
                             showingAlert = true
                         }
                         .alert("Stay Focus ", isPresented: $showingAlert) {
