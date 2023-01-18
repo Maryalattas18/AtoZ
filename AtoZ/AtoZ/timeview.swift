@@ -1,15 +1,13 @@
 //
-//  ContentView.swift
+//  timeview.swift
 //  AtoZ
 //
-//  Created by Maria Alattas on 15/06/1444 AH.
+//  Created by Doaa on 16/01/2023.
 //
-// brunch
 
 import SwiftUI
 
-struct ContentView: View {
-    
+struct timeview: View {
     @State var hoursSelection = 0
     @State var minSelection = 0
     @State var secSelection = 0
@@ -30,80 +28,90 @@ struct ContentView: View {
     @State private var showingAlert = false
 
         
-    func picker() {
-        
-    }
+    
     var body: some View {
         
         VStack{
             HStack{
 
                 
-                Text("\(hoursSelection)")
-                    .onReceive(timer) { _ in
-
-                            if hoursSelection >= 0 && timerRunning{
-                                if minSelection == 0 && secSelection == 0  {
-
-                                hoursSelection -= 1
-                            }
-                        }else{
-                            timerRunning = false
-                        }
-                    }
-                    .font(.system(size : 80, weight : .bold))
-                    .opacity(0.80)
-
-
-
-
-                Text(": \(minSelection)")
-                    .onReceive(timer) { _ in
-                        if minSelection > 0 && timerRunning{
-                            if secSelection == 0 {
-                                minSelection -= 1
-
-                            }
-
-                        }else if minSelection == 0 && hoursSelection != 0 && timerRunning {
-                                    hoursSelection -= 1
-                            
-                                    minSelection += 59
-                                secSelection += 59
-                            
+                Text("\(hoursSelection):\(minSelection):\(secSelection)")
                 
-                        }else{
-                                timerRunning = false
-                            }
-                        }
-                    .font(.system(size : 80, weight : .bold))
-                    .opacity(0.80)
-
-
-
-
-                Text(": \(secSelection)")
                     .onReceive(timer) { _ in
-                        if secSelection > 0 && timerRunning {
 
-                            secSelection -= 1
-
-                        }else {
-
-                            if secSelection == 0 && minSelection != 0 ,  secSelection == 0 && hoursSelection != 0  {
-                                secSelection += 59
-                                secSelection -= 1
-                            }
-                            else{
-                                timerRunning = false
+                        if secSelection != 0 , minSelection >= 0 , hoursSelection >= 0 &&  timerRunning {
+                            
+                            secSelection -= 1;
+                            
+                            
+                            if secSelection == 0 , minSelection != 0 , hoursSelection >= 0 && timerRunning {
+                            
+                            minSelection -= 1 ;
+                            secSelection = 59 ;
+//                                secSelection -= 1;
+                                
+                                if secSelection == 0 , minSelection == 0 ,  hoursSelection != 0 && timerRunning {
+                                    
+                                    hoursSelection -= 1
+                                    minSelection = 59;
+                                    secSelection = 59;
+                                     secSelection -= 1;
+                                   
+                                    
+                                    
+                                }else{
+                                    timerRunning = false
+                                }
+                                
+                                //
+                                //
+                                //
+                                //
+                                //                        if minSelection > 0 && timerRunning{
+                                //                            if secSelection == 0 {
+                                //                                minSelection -= 1
+                                //
+                                //                            }
+                                //
+                                //                        }else if minSelection == 0 && hoursSelection != 0 && timerRunning {
+                                //                                    hoursSelection -= 1
+                                //
+                                //                                    minSelection += 59
+                                //                                secSelection += 59
+                                //
+                                //
+                                //                        }else{
+                                //                                timerRunning = false
+                                //                            }
+                                //
+                                //
+                                //
+                                //
+                                //
+                                //
+                                //
+                                //                        if secSelection > 0 && timerRunning {
+                                //
+                                //                            secSelection -= 1
+                                //
+                                //                        }else {
+                                //
+                                //                            if secSelection == 0 && minSelection != 0 ,  secSelection == 0 && hoursSelection != 0  {
+                                //                                secSelection += 59
+                                //                                secSelection -= 1
+                                //                            }
+                                //                            else{
+                                //                                timerRunning = false
+                                
                             }
                         }
-                    }
+                        
+                    }//on res
                     .font(.system(size : 80, weight : .bold))
                     .opacity(0.80)
 
 
-            }
+            }//hstack
 
             
             
@@ -119,7 +127,7 @@ struct ContentView: View {
                     Circle()
                         .trim(from: 0, to: Double(seconds)/60.0)
                     
-                        .stroke(Color("Color"), lineWidth: 10)
+                        .stroke(Color("Color"), lineWidth: 20)
                         .frame(width: 300, height: 300)
                         .rotationEffect(Angle(degrees: 270))
                     
@@ -199,17 +207,8 @@ struct ContentView: View {
     }//body
 }//all
 
-
-
-struct ContentView_Previews: PreviewProvider {
+struct timeview_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        timeview()
     }
 }
-
-
-
-func countDown (){
-    
-}
-
