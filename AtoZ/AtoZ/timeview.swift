@@ -8,13 +8,19 @@
 import SwiftUI
 
 struct timeview: View {
+    
+
     @State var hoursSelection = 0
     @State var minSelection = 0
     @State var secSelection = 0
-       
-    var hours = [Int](0..<24)
-    var min = [Int](0..<60)
-    var sec = [Int](0..<60)
+    
+    
+
+    let hours = [Int](0..<24)
+    let min = [Int](0..<60)
+    let sec = [Int](0..<60)
+    
+    
     
     
     @State var task:String = ""
@@ -27,91 +33,50 @@ struct timeview: View {
     
     @State private var showingAlert = false
 
-        
+   
     
     var body: some View {
         
         VStack{
             HStack{
-
+                
                 
                 Text("\(hoursSelection):\(minSelection):\(secSelection)")
                 
                     .onReceive(timer) { _ in
-
-                        if secSelection != 0 , minSelection >= 0 , hoursSelection >= 0 &&  timerRunning {
+                        
+                        
+                        if secSelection > 0 && timerRunning {
+                            secSelection -= 1
                             
-                            secSelection -= 1;
                             
                             
-                            if secSelection == 0 , minSelection != 0 , hoursSelection >= 0 && timerRunning {
-                            
-                            minSelection -= 1 ;
-                            secSelection = 59 ;
-//                                secSelection -= 1;
+                            if secSelection == 0 , minSelection > 0 && timerRunning {
+                                minSelection -= 1
+                                secSelection += 59
                                 
-                                if secSelection == 0 , minSelection == 0 ,  hoursSelection != 0 && timerRunning {
+                                
+                                
+                            } ; if secSelection == 0 && minSelection == 0 && hoursSelection > 0 &&  timerRunning {
                                     
                                     hoursSelection -= 1
-                                    minSelection = 59;
-                                    secSelection = 59;
-                                     secSelection -= 1;
-                                   
+                                    
+                                    minSelection += 59
+                                    secSelection += 59
                                     
                                     
-                                }else{
-                                    timerRunning = false
-                                }
-                                
-                                //
-                                //
-                                //
-                                //
-                                //                        if minSelection > 0 && timerRunning{
-                                //                            if secSelection == 0 {
-                                //                                minSelection -= 1
-                                //
-                                //                            }
-                                //
-                                //                        }else if minSelection == 0 && hoursSelection != 0 && timerRunning {
-                                //                                    hoursSelection -= 1
-                                //
-                                //                                    minSelection += 59
-                                //                                secSelection += 59
-                                //
-                                //
-                                //                        }else{
-                                //                                timerRunning = false
-                                //                            }
-                                //
-                                //
-                                //
-                                //
-                                //
-                                //
-                                //
-                                //                        if secSelection > 0 && timerRunning {
-                                //
-                                //                            secSelection -= 1
-                                //
-                                //                        }else {
-                                //
-                                //                            if secSelection == 0 && minSelection != 0 ,  secSelection == 0 && hoursSelection != 0  {
-                                //                                secSelection += 59
-                                //                                secSelection -= 1
-                                //                            }
-                                //                            else{
-                                //                                timerRunning = false
-                                
+                                }}
+                        
+                            else{
+                                timerRunning = false
                             }
-                        }
                         
                     }//on res
                     .font(.system(size : 80, weight : .bold))
                     .opacity(0.80)
-
-
-            }//hstack
+                
+                
+            }//h
 
             
             
@@ -124,8 +89,10 @@ struct timeview: View {
                 TimelineView(.animation){ context in
                     let date = context.date
                     let seconds = Calendar.current.component(.second, from: date)
+                   
                     Circle()
-                        .trim(from: 0, to: Double(seconds)/60.0)
+                    
+                        .trim(from:0, to: Double(seconds)/60.0)
                     
                         .stroke(Color("Color"), lineWidth: 20)
                         .frame(width: 300, height: 300)
