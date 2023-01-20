@@ -51,25 +51,27 @@ struct timeview: View {
                             
                             
                             
-                            if secSelection == 0 , minSelection > 0 && timerRunning {
+                        } else if minSelection > 0 , secSelection == 0  && timerRunning {
                                 minSelection -= 1
                                 secSelection += 59
                                 
                                 
                                 
-                            } ; if secSelection == 0 && minSelection == 0 && hoursSelection > 0 &&  timerRunning {
-                                    
-                                    hoursSelection -= 1
-                                    
-                                    minSelection += 59
-                                    secSelection += 59
-                                    
-                                    
-                                }}
-                        
-                            else{
+                            } else if hoursSelection > 0 && minSelection == 0 &&  secSelection == 0 && timerRunning {
+                                
+                                hoursSelection -= 1
+                                minSelection += 59
+                                secSelection += 59
+                                
+                                
+                            }
+                            
+                                
+                        else {
                                 timerRunning = false
                             }
+                    
+                        
                         
                     }//on res
                     .font(.system(size : 80, weight : .bold))
